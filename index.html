@@ -5,96 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <script>
-        // function to generate the computer selection
-        function computerPlay() {
-            randomSelection = Math.floor( Math.random() * 3);
-    
-            if (randomSelection == '0') {
-                return "rock";{playerScore, 
-                    computerScore, 
-                    roundWinner
-            };
-            }
-            else if (randomSelection == '1') {
-                return 'paper';
-            }
-            else {
-                return 'scissors';
-            }
-        }
+    <div id="gameContainer">
+        <div id="playerChoices">
+            <button class="playerButton" id="rock">Rock</button>
+            <button class="playerButton" id="paper">Paper</button>
+            <button class="playerButton" id="scissors">Scissors</button>
+        </div>
+    </div>
 
-        // function to play the game
-        function game() {
+<script src="js/main.js"></script>
 
-            // initialise scores etc
-            let playerScore = 0;
-            let computerScore = 0;
-            let roundWinner = '';
-
-            for (let i = 0; i < 5; i++) {
-
-                // get the players selection
-                let userSelection =  prompt('Select either: Rock, Paper or Scissors.', 'Rock').toUpperCase();
-
-                // get computer selection
-                let machineSelection = computerPlay().toUpperCase();
-
-                
-
-                // function to play a single round
-                function playRound( playerSelection, computerSelection) {
-                    if (playerSelection === computerSelection) {
-                        roundWinner = 'It was a tie!'
-                    }
-
-                    if (
-                        (playerSelection === 'ROCK' && computerSelection === 'SCISSORS') ||
-                        (playerSelection === 'SCISSORS' && computerSelection === 'PAPER') ||
-                        (playerSelection === 'PAPER' && computerSelection === 'ROCK')
-                    ) {
-                        playerScore++
-                        roundWinner = 'Congratulations you won!'
-                    }
-
-                    if (
-                        (computerSelection === 'ROCK' && playerSelection === 'SCISSORS') ||
-                        (computerSelection === 'SCISSORS' && playerSelection === 'PAPER') ||
-                        (computerSelection === 'PAPER' && playerSelection === 'ROCK')
-                    ) {
-                        computerScore++
-                        roundWinner = 'Sorry the computer won!'
-                    }  
-
-                    return {roundWinner, 
-                            playerScore, 
-                            computerScore}
-                    
-                    
-                }
-
-                playRound(userSelection, machineSelection);
-
-                console.log(roundWinner, playerScore, computerScore);
-
-            }
-
-            if ( playerScore > computerScore) {
-                console.log('Congratulations you beat the computer ' + playerScore + ':' + computerScore);
-            }
-            else if (computerScore > playerScore) {
-                console.log('Sorry the computer won ' + computerScore + ':' + playerScore);
-            }
-            else {
-                console.log('It was a draw ' + playerScore + ':' + computerScore);
-            }
-
-        }
-        
-        // call the game
-        game();
-    </script>
 </body>
 </html>

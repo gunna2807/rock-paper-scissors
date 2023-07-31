@@ -1,0 +1,13 @@
+body {
+    background-color: darkgrey;
+}
+
+.playerButton {
+    background-color: dodgerblue;
+    font-size: large;
+    border:  2px solid whitesmoke;
+    border-radius: 5px;
+    height: 100px;
+    width: 90px;
+    
+}
