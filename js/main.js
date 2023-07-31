@@ -30,3 +30,33 @@ function getPlayerChoice(e) {
     playRound(playerSelection, computerPlay());
 }
 
+// Play a round
+function playRound(playerSelection, computerSelection) {
+    let roundWinCombo = '${playerSelection} - ${computerSelection.value}';
+    let playerWinCombo = ['1-0', '0-2', '2-1'];
+
+    if (Number(playerSelection) === computerSelection.value) {
+        playerPoints.textContent = ++playerScore
+        computerPoints.textContent = ++computerScore
+        roundResults.textContent = 'Tied round!'
+    } else if (playerWinCombo.includes(roundWinCombo)) {
+        playerPoints.textContent = ++playerScore
+        roundResults.textContent = 'You win! ${playerChoice} beats ${computerSelection.choice}';
+    } else {
+        computerPoints.textContent = ++computerScore
+        roundResults.textContent = 'You lose! ${computerSelection.choice} beats ${playerChoice}';
+    }
+
+    checkWinner();
+}
+
+// Set up output for results
+const winningResults = {
+    computer: ["You lost to the computer!", 'red'],
+    player: ["You win, You beat the computer!", 'forestgreen'],
+    tie: ["The game is a Tie!", 'darkslategrey']
+}
+
+function checkWinner() {
+    
+}
