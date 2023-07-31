@@ -1,13 +1,39 @@
+/* Set background color */
 body {
     background-color: darkgrey;
 }
 
-.playerButton {
-    background-color: dodgerblue;
-    font-size: large;
-    border:  2px solid whitesmoke;
-    border-radius: 5px;
-    height: 100px;
-    width: 90px;
-    
+/* Set up main window */
+.flex {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding-top: 25px;
 }
+
+/* Headings */
+h1 {
+    color: darkgreen;
+    font-family: 'britannic bold', 'cooper black', sans-serif;
+    font-size: 70;
+    margin: 20px;
+}
+
+h2 {
+    color: green;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    margin: 20px;
+}
+
+h3 {
+    color: forestgreen;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 40px;
+    margin: 20px;
+}
+
+/* Buttons */

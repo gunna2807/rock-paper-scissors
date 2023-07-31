@@ -4,19 +4,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
+
 <body>
-    <div id="gameContainer">
-        <div id="playerChoices">
-            <button class="playerButton" id="rock">Rock</button>
-            <button class="playerButton" id="paper">Paper</button>
-            <button class="playerButton" id="scissors">Scissors</button>
+    <div class="mainWindow">
+
+        <!-- Headings -->
+        <h1>Rock Paper Scissors</h1>
+        <h2>You vs the Computer</h2>
+        <h3>First to 5 wins!</h3>
+        <h3>Make a Choice</h3>
+
+        <!-- Option buttons -->
+        <div class="optionBtns">
+            <button id="0">Rock</button>
+            <button id="1">Paper</button>
+            <button id="2">Scissors</button>
         </div>
+
+        <!-- Captions -->
+        <div class="captions">
+            <span id="playerCaption">Player Scores</span>
+            <span id="computerCaption">Computer Scores</span>
+        </div>
+
+        <!-- scores -->
+        <div class="scores">
+            <div id="playerScore"></div>
+            <div id="computerScore"></div>
+        </div>
+
+        <!-- Results caption -->
+        <div><span id="resultsCaption">Results</span></div>
+
+        <!-- Result of current round -->
+        <div id="roundResults"></div>
+
+        <!-- reset the game -->
+        <div>
+            <button id="reset">Play Again?</button>
+        </div>
+
     </div>
+</body>
 
 <script src="js/main.js"></script>
 
-</body>
 </html>
