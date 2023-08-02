@@ -15,32 +15,34 @@
         <h1>Rock Paper Scissors</h1>
         <h2>You vs the Computer</h2>
         <h3>First to 5 wins!</h3>
-        <h3>Make a Choice</h3>
-
+        
         <!-- Option buttons -->
-        <div class="optionBtns">
-            <button id="0">Rock</button>
-            <button id="1">Paper</button>
-            <button id="2">Scissors</button>
+        <div class="choices">
+            <button class="choice" id="rock">Rock</button>
+            <button class="choice" id="paper">Paper</button>
+            <button class="choice" id="scissors">Scissors</button>
         </div>
+
+        <!-- Computer choice -->
+        <div id="computerChoice">Computer Choice</div>
 
         <!-- Captions -->
         <div class="captions">
-            <span id="playerCaption">Player Score</span>
-            <span id="computerCaption">Computer Score</span>
+            <span class="playerScore">Player Score</span>
+            <span class="computerScore">Computer Score</span>
         </div>
 
-        <!-- scores -->
+        <!-- Scores -->
         <div class="scores">
-            <div id="playerScore"></div>
-            <div id="computerScore"></div>
+            <div id="playerScore">0</div>
+            <div id="computerScore">0</div>
         </div>
 
         <!-- Results caption -->
-        <div><span id="resultsCaption">Results</span></div>
+        <div><span id="resultCaption">Results</span></div>
 
         <!-- Result of current round -->
-        <div id="roundResults"></div>
+        <div id="result">Make a choice to start the game</div>
 
         <!-- reset the game -->
         <div>

@@ -37,7 +37,7 @@ h3 {
 }
 
 /* Buttons */
-.optionBtns button {
+.choices .choice {
         height: 75px;
         width: 150px;
         background-color: dodgerblue;
@@ -59,14 +59,21 @@ h3 {
 }
 
 /* Captions */
-#resultsCaption {
+#computerChoice {
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    padding-bottom: 20px;
+}
+
+#resultCaption {
     font-size: 20px;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     color: midnightblue;
 }
 
-#playerCaption {
+.playerScore {
     font-size: 20px;
     font-weight: bold;
     font-family:Arial, Helvetica, sans-serif;
@@ -75,7 +82,7 @@ h3 {
     padding-left: 18px;
 }
 
-#computerCaption {
+.computerScore {
     font-size: 20px;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
@@ -104,9 +111,9 @@ h3 {
     margin-right: 5px;
 }
 
-#roundResults {
+#result {
     display: flex;
-    height: 100px;
+    height: 50px;
     width: 300px;
     border: 5px solid black;
     font-weight: bold;

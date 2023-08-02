@@ -1,62 +1,88 @@
-const optionBtns = document.querySelectorAll('div.optionBtns button');
-const roundResults = document.querySelector('#roundResults');
-const playerPoints = document.querySelector('#playerScore');
-const computerPoints = document.querySelector('#computerScore');
+// Set up access to DOM elements
+const choices = document.querySelectorAll('.choice');
+const playerScoreElem = document.querySelector('#playerScore');
+const computerScoreElem = document.querySelector('#computerScore');
+const resultElem = document.querySelector('#result');
 const resetBtn = document.querySelector('#reset');
+const computerChoiceElem = document.querySelector('#computerChoice');
 
-// Reset page for new game
-resetBtn.addEventListener('click',() => location.reload());
+// Event listeners
+choices.forEach((choice) => choice.addEventListener('click', selectWeapon));
+resetBtn.addEventListener('click', resetGame);
 
-// Add eventlistener for player choice
-optionBtns.forEach(button => {button.addEventListener('click', getPlayerChoice) });
+// Set up weapon string
+const weapons = ['rock', 'paper', 'scissors'];
 
-// Set up variables for the functions
-let computerChoices = [{choice: 'Rock', value: 0}, {choice: 'Paper', value: 1},
-                        {choice: 'Scissors,', value: 2}];
+// Set up score variables
 let playerScore = 0;
 let computerScore = 0;
-let playerChoice;
 
-// Get computer choice
+// Generate random weapon for computer
 function computerPlay() {
-    let result = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-    return result;
+    const weaponIndex = Math.floor(Math.random() * weapons.length);
+    return weapons[weaponIndex];
 }
 
-// Get player choice
-function getPlayerChoice(e) {
-    let playerSelection = (e.target.id);
-    playerChoice = e.target.textContent;
-    playRound(playerSelection, computerPlay());
-}
-
-// Play a round
-function playRound(playerSelection, computerSelection) {
-    let roundWinCombo = '${playerSelection} - ${computerSelection.value}';
-    let playerWinCombo = ['1-0', '0-2', '2-1'];
-
-    if (Number(playerSelection) === computerSelection.value) {
-        playerPoints.textContent = ++playerScore
-        computerPoints.textContent = ++computerScore
-        roundResults.textContent = 'Tied round!'
-    } else if (playerWinCombo.includes(roundWinCombo)) {
-        playerPoints.textContent = ++playerScore
-        roundResults.textContent = 'You win! ${playerChoice} beats ${computerSelection.choice}';
+// Play a round then display result and update score
+function playRound(playerWeapon, computerWeapon) {
+    computerChoiceElem.innerHTML = 'Computer chose: ' + computerWeapon + '.';
+    if (playerWeapon === computerWeapon) {
+        resultElem.innerHTML = "It's a tie!";
+    } else if (
+        (playerWeapon === 'rock' && computerWeapon === 'scissors') ||
+        (playerWeapon === 'paper' && computerWeapon === 'rock') ||
+        (playerWeapon === 'scissors' && computerWeapon === 'paper')
+    ) {
+        resultElem.innerHTML = 'You win!';
+        playerScore++;
+        playerScoreElem.innerHTML = playerScore;
     } else {
-        computerPoints.textContent = ++computerScore
-        roundResults.textContent = 'You lose! ${computerSelection.choice} beats ${playerChoice}';
+        resultElem.innerHTML = 'Computer wins!';
+        computerScore++;
+        computerScoreElem.innerHTML = computerScore;
     }
 
-    checkWinner();
+    // Check scores to see if game is over
+    if (playerScore === 5) {
+        resultElem.textContent = 'You won the game!';
+        resultElem.computedStyleMap.color = 'green';
+        computerChoiceElem.innerHTML = 'Game over!';
+        disableOptions();
+    }
+
+    if (computerScore === 5) {
+        resultElem.textContent = 'You lost the game!';
+        resultElem.computedStyleMap.color = 'red';
+        computerChoiceElem.innerHTML = 'Game over!';
+        disableOptions();
+    }
 }
 
-// Set up output for results
-const winningResults = {
-    computer: ["You lost to the computer!", 'red'],
-    player: ["You win, You beat the computer!", 'forestgreen'],
-    tie: ["The game is a Tie!", 'darkslategrey']
+// Get player choice and start game
+function selectWeapon() {
+    const playerWeapon = this.id;
+    const computerWeapon = computerPlay();
+    playRound(playerWeapon, computerWeapon);
 }
 
-function checkWinner() {
-    
+// Reset the game
+function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
+    playerScoreElem.innerHTML = 0;
+    computerScoreElem.innerHTML = 0;
+    resultElem.innerHTML = "Make a choice to start the game"
+    enableOptions();
+}
+
+function disableOptions() {
+    choices.forEach((choice) => {
+        choice.style.pointerEvents = 'none';
+    });
+}
+
+function enableOptions() {
+    choices.forEach((choice) => {
+        choice.style.pointerEvents = 'auto';
+    });
 }
