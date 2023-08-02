@@ -45,14 +45,14 @@ function playRound(playerWeapon, computerWeapon) {
     // Check scores to see if game is over
     if (playerScore === 5) {
         resultElem.textContent = 'You won the game!';
-        resultElem.computedStyleMap.color = 'green';
+        resultElem.style.color = 'darkgreen';
         computerChoiceElem.innerHTML = 'Game over!';
         disableOptions();
     }
 
     if (computerScore === 5) {
         resultElem.textContent = 'You lost the game!';
-        resultElem.computedStyleMap.color = 'red';
+        resultElem.style.color = 'red';
         computerChoiceElem.innerHTML = 'Game over!';
         disableOptions();
     }
@@ -71,6 +71,7 @@ function resetGame() {
     computerScore = 0;
     playerScoreElem.innerHTML = 0;
     computerScoreElem.innerHTML = 0;
+    resultElem.style.color = 'black';
     resultElem.innerHTML = "Make a choice to start the game"
     enableOptions();
 }
