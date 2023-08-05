@@ -1,6 +1,6 @@
-This is a first exercise in writing a program using javascript. It will be 
-simple and use only the basics necessary at this stage and will be further 
-developed at a later stage.
+This is an updated version of the app with a user interface added. The point of 
+the exercise was to demonstrate the use of CSS and Java Script to improve the
+user experience.
 
 Note that if you download the code and want to run it locally you will have 
 to change the start of the links as they are currently set up to run remotely
